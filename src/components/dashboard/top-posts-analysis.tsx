@@ -31,8 +31,21 @@ export function TopPostsAnalysis({ data }: TopPostsAnalysisProps) {
         { name: "Other Posts", value: Math.max(0, summary.totalEngagements - top50EngagementsSum) }
     ]
 
-    const COLORS = ["#0a66c2", "#e5e7eb"] // LinkedIn Blue, Gray
-    const COLORS_ENGAGEMENT = ["#70b5f9", "#e5e7eb"] // Light Blue, Gray
+    const COLORS = ["#0a66c2", "#70b5f9"] // Dark Blue for Top 50, Light Blue for Others
+
+    // Custom Tooltip matching the charts design
+    const CustomTooltip = ({ active, payload }: any) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
+                    <p className="text-sm text-muted-foreground">
+                        {payload[0].name}: <span className="font-semibold text-foreground">{payload[0].value.toLocaleString()}</span>
+                    </p>
+                </div>
+            )
+        }
+        return null
+    }
 
     return (
         <div className="grid gap-4 md:grid-cols-3">
@@ -45,23 +58,35 @@ export function TopPostsAnalysis({ data }: TopPostsAnalysisProps) {
                     <div className="h-[250px]">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
+                                <defs>
+                                    <linearGradient id="gradientDarkBlue" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#0a66c2" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="#084a8f" stopOpacity={1} />
+                                    </linearGradient>
+                                    <linearGradient id="gradientLightBlue" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#70b5f9" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="#4a9de8" stopOpacity={1} />
+                                    </linearGradient>
+                                </defs>
                                 <Pie
                                     data={impressionsData}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={80}
+                                    innerRadius={50}
+                                    outerRadius={90}
                                     fill="#8884d8"
-                                    paddingAngle={5}
+                                    paddingAngle={2}
                                     dataKey="value"
+                                    stroke="none"
                                 >
                                     {impressionsData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        <Cell
+                                            key={`cell-${index}`}
+                                            fill={index === 0 ? "url(#gradientDarkBlue)" : "url(#gradientLightBlue)"}
+                                        />
                                     ))}
                                 </Pie>
-                                <Tooltip
-                                    formatter={(value: number) => value.toLocaleString()}
-                                />
+                                <Tooltip content={<CustomTooltip />} />
                                 <Legend verticalAlign="bottom" height={36} />
                             </PieChart>
                         </ResponsiveContainer>
@@ -81,23 +106,35 @@ export function TopPostsAnalysis({ data }: TopPostsAnalysisProps) {
                     <div className="h-[250px]">
                         <ResponsiveContainer width="100%" height="100%">
                             <PieChart>
+                                <defs>
+                                    <linearGradient id="gradientDarkBlue2" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#0a66c2" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="#084a8f" stopOpacity={1} />
+                                    </linearGradient>
+                                    <linearGradient id="gradientLightBlue2" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stopColor="#70b5f9" stopOpacity={1} />
+                                        <stop offset="100%" stopColor="#4a9de8" stopOpacity={1} />
+                                    </linearGradient>
+                                </defs>
                                 <Pie
                                     data={engagementsData}
                                     cx="50%"
                                     cy="50%"
-                                    innerRadius={60}
-                                    outerRadius={80}
+                                    innerRadius={50}
+                                    outerRadius={90}
                                     fill="#8884d8"
-                                    paddingAngle={5}
+                                    paddingAngle={2}
                                     dataKey="value"
+                                    stroke="none"
                                 >
                                     {engagementsData.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS_ENGAGEMENT[index % COLORS_ENGAGEMENT.length]} />
+                                        <Cell
+                                            key={`cell-${index}`}
+                                            fill={index === 0 ? "url(#gradientDarkBlue2)" : "url(#gradientLightBlue2)"}
+                                        />
                                     ))}
                                 </Pie>
-                                <Tooltip
-                                    formatter={(value: number) => value.toLocaleString()}
-                                />
+                                <Tooltip content={<CustomTooltip />} />
                                 <Legend verticalAlign="bottom" height={36} />
                             </PieChart>
                         </ResponsiveContainer>

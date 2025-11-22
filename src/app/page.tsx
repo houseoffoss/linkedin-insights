@@ -79,12 +79,6 @@ export default function Home() {
             Parsing your data...
           </p>
         )}
-        <p className="mt-4 text-xs text-muted-foreground">
-          Don't have an export?{" "}
-          <button className="underline hover:text-foreground">
-            Try with demo data
-          </button>
-        </p>
       </div>
 
       {/* How to Export Section */}

@@ -90,18 +90,18 @@ export function Charts({ data, timePeriod, onTimePeriodChange }: ChartsProps) {
     const TimeFilterButtons = () => (
         <div className="flex items-center gap-2 bg-muted/50 p-1 rounded-lg">
             <Button
-                variant={timePeriod === "week" ? "secondary" : "ghost"}
+                variant={timePeriod === "week" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => onTimePeriodChange("week")}
-                className="h-7 text-xs"
+                className={`h-7 text-xs ${timePeriod === "week" ? "bg-gradient-to-b from-[#0a66c2] to-[#084a8f] hover:from-[#084a8f] hover:to-[#0a66c2]" : ""}`}
             >
                 Weekly
             </Button>
             <Button
-                variant={timePeriod === "month" ? "secondary" : "ghost"}
+                variant={timePeriod === "month" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => onTimePeriodChange("month")}
-                className="h-7 text-xs"
+                className={`h-7 text-xs ${timePeriod === "month" ? "bg-gradient-to-b from-[#0a66c2] to-[#084a8f] hover:from-[#084a8f] hover:to-[#0a66c2]" : ""}`}
             >
                 Monthly
             </Button>
@@ -150,6 +150,10 @@ export function Charts({ data, timePeriod, onTimePeriodChange }: ChartsProps) {
                     <ResponsiveContainer width="100%" height={400}>
                         <ComposedChart data={chartData}>
                             <defs>
+                                <linearGradient id="colorImpressions" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#0a66c2" stopOpacity={0.9} />
+                                    <stop offset="95%" stopColor="#0a66c2" stopOpacity={0.6} />
+                                </linearGradient>
                                 <linearGradient id="colorEngagements" x1="0" y1="0" x2="0" y2="1">
                                     <stop offset="5%" stopColor="#70b5f9" stopOpacity={0.3} />
                                     <stop offset="95%" stopColor="#70b5f9" stopOpacity={0} />
@@ -191,7 +195,7 @@ export function Charts({ data, timePeriod, onTimePeriodChange }: ChartsProps) {
                             <Bar
                                 yAxisId="left"
                                 dataKey="Impressions"
-                                fill="#0a66c2"
+                                fill="url(#colorImpressions)"
                                 radius={[4, 4, 0, 0]}
                                 barSize={40}
                             />

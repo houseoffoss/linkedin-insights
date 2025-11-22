@@ -15,15 +15,12 @@ LinkedIn Insights is a lightweight, privacy-focused web application designed to 
     5. Sends **JSON payload** to backend API.
 
 ### 2. Backend (Next.js API Routes)
-- **Role**: Validation, Aggregation, and Storage (Optional).
+- **Role**: Validation and Aggregation.
 - **Input**: Receives sanitized JSON (NOT raw Excel).
 - **Processing**:
     - Zod schema validation of incoming JSON.
     - Generates derived metrics (e.g., Engagement Rate).
     - Returns processed data for rendering.
-- **Database**: PostgreSQL (via Prisma/Drizzle).
-    - Used for temporary session storage or future historical data.
-    - Kept lightweight to fit memory constraints.
 
 ### 3. Frontend (Next.js App Router)
 - **Rendering**: Client Components for Charts (Recharts/Visx).
@@ -36,7 +33,6 @@ LinkedIn Insights is a lightweight, privacy-focused web application designed to 
 - **Performance**: `node:alpine` base images for reduced footprint.
 - **Security**:
   - Non-root user execution in containers.
-  - **Network Isolation**: Database is on a private Docker network, inaccessible from the host.
 - **Other**:
     - Offload parsing to client.
     - Minimal runtime dependencies.

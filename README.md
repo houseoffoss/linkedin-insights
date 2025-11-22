@@ -4,32 +4,36 @@
 ![Next.js](https://img.shields.io/badge/Next.js-16.0-black)
 ![Docker](https://img.shields.io/badge/Docker-Ready-blue)
 
-**LinkedIn Insights** is a lightweight, privacy-focused web application that converts your official LinkedIn Analytics Excel export into clean, actionable visual insights.
+**LinkedIn Insights** is a privacy-first, client-side analytics dashboard that transforms your LinkedIn export data into actionable visual insights.
 
-Designed to run on minimal infrastructure (1 vCPU / 2GB RAM), it processes your data entirely in the browser—ensuring your raw Excel file never leaves your device.
+Designed with a "privacy-by-design" philosophy, this application processes all data locally in your browser. Your raw Excel files are **never uploaded** to any server or database.
 
 ## 🚀 Key Features
 
-- **Client-Side Parsing**: Your Excel file is parsed instantly in the browser. No raw data upload.
-- **Instant Dashboard**: Visualize Impressions, Engagement, and Follower growth immediately.
-- **Privacy First**: No account required. Data persists only for the active session.
-- **Lightweight**: Optimized for performance with a minimal footprint.
-- **Open Source**: Built for the community, by the community.
+- **🔒 Privacy First**: 100% client-side processing. Your data never leaves your device.
+- **📊 Interactive Dashboard**: Visualize Impressions, Engagements, and Follower growth over time.
+- **📈 Top Posts Analysis**: Deep dive into your best-performing content with distribution charts and engagement ratios.
+- **🌗 Dark Mode**: sleek, LinkedIn-inspired dark theme for comfortable viewing.
+- **⚡ Instant Parsing**: Drag-and-drop your official LinkedIn Analytics export for immediate results.
+- **📱 Responsive Design**: Fully optimized for desktop and tablet viewing.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Database**: PostgreSQL (Alpine) - *Lightweight usage for session/metadata*
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) & [Shadcn/UI](https://ui.shadcn.com/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Data Processing**: [SheetJS (xlsx)](https://sheetjs.com/)
 - **Infrastructure**: Docker & Docker Compose
 
 ## 🏁 Getting Started
 
 ### Prerequisites
-- Docker & Docker Compose
 
-### Quick Start (Docker)
+- [Docker](https://www.docker.com/) & Docker Compose
+- *Or* [Node.js](https://nodejs.org/) v18+ (for local development)
+
+### 🐳 Quick Start (Docker)
 
 1. **Clone the repository**
    ```bash
@@ -37,36 +41,72 @@ Designed to run on minimal infrastructure (1 vCPU / 2GB RAM), it processes your 
    cd linkedin-insights
    ```
 
-2. **Start Development Environment**
+2. **Set up Environment Variables**
+   Create a `.env.local` file in the root directory (optional, for Firebase Analytics):
+   ```env
+   NEXT_PUBLIC_FIREBASE_API_KEY=your_key
+   NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_domain
+   NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
+   # ... other firebase config
+   ```
+
+3. **Start Development Environment**
    ```bash
    docker-compose -f dev.docker-compose.yml up
    ```
-   - App: `http://localhost:3000`
-   - DB: `localhost:5433`
+   - App running at: `http://localhost:3000`
+   - Hot-reload enabled
 
-3. **Start Production Environment**
+4. **Start Production Environment**
    ```bash
    docker-compose up -d --build
    ```
-   - App: `http://localhost:3000`
+   - App running at: `http://localhost:3000`
+   - Optimized production build
 
-For detailed setup instructions, check out the [Setup Guide](docs/technical/setup.md).
+### 💻 Local Development (No Docker)
 
-## 🗺️ Roadmap
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-- [ ] **MVP**: Excel Upload & Basic Dashboard (Current Focus)
-- [ ] **V1**: Enhanced Charts & Auto-Insights
-- [ ] **V2**: PDF Export & Dark Mode
+2. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-See the full [Product Roadmap](docs/product/roadmap.md).
+3. **Open your browser**
+   Navigate to `http://localhost:3000`
+
+## � Project Structure
+
+```
+src/
+├── app/                # Next.js App Router pages
+├── components/         # React components
+│   ├── dashboard/      # Analytics specific components (Charts, KPIs)
+│   ├── layout/         # Layout components (Header, Footer)
+│   └── ui/             # Reusable UI components (Buttons, Cards, etc.)
+├── lib/                # Utilities and helper functions
+│   ├── excel-parser.ts # Logic for parsing LinkedIn Excel exports
+│   └── utils.ts        # General utilities
+└── types/              # TypeScript type definitions
+```
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) (coming soon) for details on our code of conduct, and the process for submitting pull requests.
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-*Built with ❤️ by [Philip Moses](https://github.com/philipmoses23) using **Google's Antigravity***
+Built with *[Google Antigravity](https://antigravity.google)* by [House Of FOSS](https://houseoffoss.com)

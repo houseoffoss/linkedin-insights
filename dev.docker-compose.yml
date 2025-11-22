@@ -13,23 +13,4 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/linkedin_insights
-    depends_on:
-      - db
     restart: always
-
-  db:
-    image: postgres:alpine
-    container_name: linkedin-insights-db-dev
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=linkedin_insights
-    volumes:
-      - postgres_data_dev:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
-    restart: always
-
-volumes:
-  postgres_data_dev:
