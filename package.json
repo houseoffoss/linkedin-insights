@@ -1,7 +1,18 @@
 {
   "name": "linkedin-insights",
   "version": "0.1.0",
-  "private": true,
+  "description": "A lightweight Next.js web application that converts a user’s LinkedIn Analytics Excel export into clean visual insights.",
+  "private": false,
+  "author": "Philip Moses <philip.moses@belsterns.com>",
+  "license": "MIT",
+  "keywords": [
+    "linkedin",
+    "analytics",
+    "visualization",
+    "nextjs",
+    "react",
+    "typescript"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",

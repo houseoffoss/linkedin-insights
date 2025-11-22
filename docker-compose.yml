@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web:
+    container_name: linkedin-insights-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/linkedin_insights
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: postgres:alpine
+    container_name: linkedin-insights-db-prod
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=linkedin_insights
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres_data_prod:
