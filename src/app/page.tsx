@@ -58,7 +58,7 @@ export default function Home() {
           </div>
           <h3 className="font-semibold">Private & Secure</h3>
           <p className="text-sm text-muted-foreground">
-            Your data never leaves your browser. 100% client-side processing.
+            Your data never leaves your browser. Everything happens on your browser.
           </p>
         </div>
         <div className="p-4 rounded-lg border bg-card text-card-foreground shadow-sm">
@@ -101,7 +101,7 @@ export default function Home() {
                 href="https://www.linkedin.com/analytics/creator/content/?lineChartType=daily&metricType=IMPRESSIONS&timeRange=past_365_days"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#70b5f9] hover:underline font-medium inline-flex items-center gap-1"
+                className="text-[#70b5f9] hover:underline inline-flex items-center gap-1"
               >
                 LinkedIn Creator Analytics page
                 <ExternalLink className="w-3 h-3" />

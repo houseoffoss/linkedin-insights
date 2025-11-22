@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { AnalyticsData } from "@/types/analytics"
-import { ArrowUpRight, Eye, MousePointerClick, ThumbsUp, Users } from "lucide-react"
+import { ArrowUpRight, Eye, MousePointerClick, ThumbsUp, UserPlus, Users } from "lucide-react"
 
 interface KPICardsProps {
     data: AnalyticsData
@@ -19,10 +19,22 @@ export function KPICards({ data }: KPICardsProps) {
             description: "Total views across all posts",
         },
         {
+            title: "Members Reached",
+            value: summary.membersReached.toLocaleString(),
+            icon: Users,
+            description: "Unique members who saw your content",
+        },
+        {
             title: "Total Engagements",
             value: summary.totalEngagements.toLocaleString(),
             icon: ThumbsUp,
             description: "Likes, comments, shares, and clicks",
+        },
+        {
+            title: "Followers Gained",
+            value: summary.followersGained.toLocaleString(),
+            icon: UserPlus,
+            description: "New followers in this period",
         },
         {
             title: "Total Followers",
@@ -33,7 +45,7 @@ export function KPICards({ data }: KPICardsProps) {
     ]
 
     return (
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-5">
             {kpis.map((kpi) => (
                 <Card key={kpi.title}>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

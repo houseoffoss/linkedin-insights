@@ -23,12 +23,12 @@ import {
 interface ChartsProps {
     data: AnalyticsData
     timePeriod: "week" | "month"
-    setTimePeriod: (period: "week" | "month") => void
+    onTimePeriodChange: (period: "week" | "month") => void
 }
 
 type TimePeriod = "week" | "month"
 
-export function Charts({ data, timePeriod, setTimePeriod }: ChartsProps) {
+export function Charts({ data, timePeriod, onTimePeriodChange }: ChartsProps) {
     // Sort by date
     const sortedDaily = [...data.daily].sort((a, b) => {
         return new Date(a.Date).getTime() - new Date(b.Date).getTime()
@@ -88,20 +88,22 @@ export function Charts({ data, timePeriod, setTimePeriod }: ChartsProps) {
     }
 
     const TimeFilterButtons = () => (
-        <div className="flex gap-2">
+        <div className="flex items-center gap-2 bg-muted/50 p-1 rounded-lg">
             <Button
-                variant={timePeriod === "week" ? "default" : "outline"}
+                variant={timePeriod === "week" ? "secondary" : "ghost"}
                 size="sm"
-                onClick={() => setTimePeriod("week")}
+                onClick={() => onTimePeriodChange("week")}
+                className="h-7 text-xs"
             >
-                Week
+                Weekly
             </Button>
             <Button
-                variant={timePeriod === "month" ? "default" : "outline"}
+                variant={timePeriod === "month" ? "secondary" : "ghost"}
                 size="sm"
-                onClick={() => setTimePeriod("month")}
+                onClick={() => onTimePeriodChange("month")}
+                className="h-7 text-xs"
             >
-                Month
+                Monthly
             </Button>
         </div>
     )
@@ -148,13 +150,13 @@ export function Charts({ data, timePeriod, setTimePeriod }: ChartsProps) {
                     <ResponsiveContainer width="100%" height={400}>
                         <ComposedChart data={chartData}>
                             <defs>
-                                <linearGradient id="colorImpressions" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#0a66c2" stopOpacity={0.3} />
-                                    <stop offset="95%" stopColor="#0a66c2" stopOpacity={0} />
+                                <linearGradient id="colorEngagements" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="5%" stopColor="#70b5f9" stopOpacity={0.3} />
+                                    <stop offset="95%" stopColor="#70b5f9" stopOpacity={0} />
                                 </linearGradient>
                                 <linearGradient id="colorFollowers" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#f55257" stopOpacity={0.3} />
-                                    <stop offset="95%" stopColor="#f55257" stopOpacity={0} />
+                                    <stop offset="5%" stopColor="#b91c1c" stopOpacity={0.3} />
+                                    <stop offset="95%" stopColor="#b91c1c" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
                             <XAxis
@@ -182,20 +184,26 @@ export function Charts({ data, timePeriod, setTimePeriod }: ChartsProps) {
                                 tickLine={false}
                                 axisLine={false}
                                 tickFormatter={(value) => `${value}`}
-                                label={{ value: 'Engagements / New Followers', angle: 90, position: 'insideRight', style: { fill: '#888888' } }}
+                                label={{ value: 'Engagements / New Followers', angle: 90, position: 'insideRight', style: { fill: '#888888', textAnchor: 'middle' } }}
                             />
                             <Tooltip content={<CustomTooltip />} />
                             <Legend />
-                            <Bar yAxisId="right" dataKey="Engagements" fill="#70b5f9" radius={[4, 4, 0, 0]} barSize={40} />
-                            <Area
+                            <Bar
                                 yAxisId="left"
-                                type="monotone"
                                 dataKey="Impressions"
-                                stroke="#0a66c2"
+                                fill="#0a66c2"
+                                radius={[4, 4, 0, 0]}
+                                barSize={40}
+                            />
+                            <Area
+                                yAxisId="right"
+                                type="monotone"
+                                dataKey="Engagements"
+                                stroke="#70b5f9"
                                 strokeWidth={3}
                                 fillOpacity={1}
-                                fill="url(#colorImpressions)"
-                                dot={{ r: 4, fill: "#0a66c2" }}
+                                fill="url(#colorEngagements)"
+                                dot={{ r: 4, fill: "#70b5f9" }}
                                 activeDot={{ r: 8 }}
                             />
                             <Area
@@ -203,11 +211,11 @@ export function Charts({ data, timePeriod, setTimePeriod }: ChartsProps) {
                                 type="monotone"
                                 dataKey="Followers"
                                 name="New Followers"
-                                stroke="#f55257"
+                                stroke="#b91c1c"
                                 strokeWidth={3}
                                 fillOpacity={1}
                                 fill="url(#colorFollowers)"
-                                dot={{ r: 4, fill: "#f55257" }}
+                                dot={{ r: 4, fill: "#b91c1c" }}
                                 activeDot={{ r: 8 }}
                             />
                         </ComposedChart>
