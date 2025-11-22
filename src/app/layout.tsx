@@ -16,20 +16,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "LinkedIn Insights - Transform Your Analytics into Visual Insights",
-  description: "A privacy-focused web app that converts LinkedIn Analytics Excel exports into beautiful, actionable insights. 100% client-side processing - your data never leaves your browser.",
-  keywords: ["linkedin analytics", "data visualization", "privacy-focused", "excel parser", "social media analytics"],
+  title: "LinkedIn Insights - Free Analytics Dashboard | Visualize Your LinkedIn Performance",
+  description: "Transform your LinkedIn Analytics Excel export into interactive charts and insights. Free, privacy-first tool with 100% client-side processing. Track impressions, engagement, and growth trends instantly. No signup required.",
+  keywords: [
+    "linkedin analytics",
+    "linkedin insights",
+    "linkedin dashboard",
+    "data visualization",
+    "privacy-focused",
+    "excel parser",
+    "social media analytics",
+    "linkedin performance",
+    "content analytics",
+    "engagement tracking",
+    "linkedin creator analytics",
+    "free analytics tool"
+  ],
   authors: [{ name: "Philip Moses", url: "https://github.com/philipmoses" }],
   openGraph: {
-    title: "LinkedIn Insights - Transform Your Analytics",
-    description: "Convert LinkedIn Analytics Excel exports into visual insights instantly. Privacy-focused and client-side processing.",
+    title: "LinkedIn Insights - Free Analytics Dashboard for LinkedIn Creators",
+    description: "Visualize your LinkedIn performance with interactive charts. Upload your analytics export and get instant insights on impressions, engagement, and trends. 100% free and privacy-focused.",
     type: "website",
     url: "https://github.com/houseoffoss/linkedin-insights",
+    siteName: "LinkedIn Insights",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LinkedIn Insights - Transform Your Analytics",
-    description: "Convert LinkedIn Analytics Excel exports into visual insights instantly.",
+    title: "LinkedIn Insights - Free Analytics Dashboard",
+    description: "Transform LinkedIn Analytics into beautiful charts. Track impressions, engagement & growth trends. Free, privacy-first, no signup needed.",
   },
 };
 

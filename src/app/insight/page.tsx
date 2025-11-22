@@ -2,16 +2,18 @@
 
 import { Charts } from "@/components/dashboard/charts"
 import { KPICards } from "@/components/dashboard/kpi-cards"
+import { TopPostsCharts } from "@/components/dashboard/top-posts-charts"
 import { Button } from "@/components/ui/button"
 import { useData } from "@/context/data-context"
 import { ArrowLeft, Download } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function DashboardPage() {
     const { data } = useData()
     const router = useRouter()
+    const [timePeriod, setTimePeriod] = useState<"week" | "month">("month")
 
     useEffect(() => {
         if (!data) {
@@ -43,7 +45,15 @@ export default function DashboardPage() {
             </div>
             <div className="space-y-4">
                 <KPICards data={data} />
-                <Charts data={data} />
+                <Charts
+                    data={data}
+                    timePeriod={timePeriod}
+                    setTimePeriod={setTimePeriod}
+                />
+                <TopPostsCharts
+                    data={data}
+                    timePeriod={timePeriod}
+                />
             </div>
         </div>
     )

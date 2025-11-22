@@ -2,6 +2,7 @@ export interface DailyEngagement {
     Date: string
     Impressions: number
     Engagements: number
+    Followers: number
 }
 
 export interface TopPost {
