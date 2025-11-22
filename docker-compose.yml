@@ -14,6 +14,8 @@ services:
     depends_on:
       - db
     restart: always
+    networks:
+      - internal
 
   db:
     image: postgres:alpine
@@ -25,6 +27,13 @@ services:
     volumes:
       - postgres_data_prod:/var/lib/postgresql/data
     restart: always
+    networks:
+      - internal
 
 volumes:
   postgres_data_prod:
+
+
+networks:
+  internal:
+    driver: bridge

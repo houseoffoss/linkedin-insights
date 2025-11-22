@@ -32,10 +32,13 @@ LinkedIn Insights is a lightweight, privacy-focused web application designed to 
 
 ## Infrastructure Constraints
 - **Resource Limit**: 1 vCPU / 2GB RAM.
-- **Optimization Strategy**:
+- **Optimization**: Multi-stage Docker build resulting in a standalone, minimal image.
+- **Performance**: `node:alpine` base images for reduced footprint.
+- **Security**:
+  - Non-root user execution in containers.
+  - **Network Isolation**: Database is on a private Docker network, inaccessible from the host.
+- **Other**:
     - Offload parsing to client.
-    - Use `node:alpine` images.
-    - Multi-stage Docker builds for standalone output.
     - Minimal runtime dependencies.
 
 ## Security
