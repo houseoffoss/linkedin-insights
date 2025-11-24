@@ -27,22 +27,6 @@ export default function DashboardPage() {
 
     return (
         <div className="flex-1 space-y-4 p-8 pt-6">
-            <div className="flex items-center justify-between space-y-2">
-                <div className="flex items-center gap-2">
-                    <Link href="/">
-                        <Button variant="ghost" size="icon">
-                            <ArrowLeft className="h-4 w-4" />
-                        </Button>
-                    </Link>
-                    <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
-                </div>
-                <div className="flex items-center space-x-2">
-                    <Button disabled>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download Report (Coming Soon)
-                    </Button>
-                </div>
-            </div>
             <div className="space-y-4">
                 <KPICards data={data} />
                 <Charts

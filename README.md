@@ -8,7 +8,11 @@
 
 Designed with a "privacy-by-design" philosophy, this application processes all data locally in your browser. Your raw Excel files are **never uploaded** to any server or database.
 
-## 🚀 Key Features
+## � Screenshot
+
+![LinkedIn Insights Dashboard](./public/screenshot.png)
+
+## �🚀 Key Features
 
 - **🔒 Privacy First**: 100% client-side processing. Your data never leaves your device.
 - **📊 Interactive Dashboard**: Visualize Impressions, Engagements, and Follower growth over time.

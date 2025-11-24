@@ -12,7 +12,7 @@ export function StarNudge() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsVisible(true)
-        }, 10000) // 10 seconds
+        }, 5000) // 5 seconds
 
         return () => clearTimeout(timer)
     }, [])
@@ -24,7 +24,7 @@ export function StarNudge() {
             <div className="bg-card border border-border p-4 rounded-lg shadow-lg max-w-sm relative">
                 <button
                     onClick={() => setIsDismissed(true)}
-                    className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
+                    className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                 >
                     <X className="w-4 h-4" />
                 </button>

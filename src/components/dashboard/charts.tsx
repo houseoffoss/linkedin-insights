@@ -93,7 +93,7 @@ export function Charts({ data, timePeriod, onTimePeriodChange }: ChartsProps) {
                 variant={timePeriod === "week" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => onTimePeriodChange("week")}
-                className={`h-7 text-xs ${timePeriod === "week" ? "bg-gradient-to-b from-[#0a66c2] to-[#084a8f] hover:from-[#084a8f] hover:to-[#0a66c2]" : ""}`}
+                className={`h-7 text-xs ${timePeriod === "week" ? "bg-gradient-to-b from-[#0a66c2] to-[#084a8f]" : ""}`}
             >
                 Weekly
             </Button>
@@ -101,7 +101,7 @@ export function Charts({ data, timePeriod, onTimePeriodChange }: ChartsProps) {
                 variant={timePeriod === "month" ? "default" : "ghost"}
                 size="sm"
                 onClick={() => onTimePeriodChange("month")}
-                className={`h-7 text-xs ${timePeriod === "month" ? "bg-gradient-to-b from-[#0a66c2] to-[#084a8f] hover:from-[#084a8f] hover:to-[#0a66c2]" : ""}`}
+                className={`h-7 text-xs ${timePeriod === "month" ? "bg-gradient-to-b from-[#0a66c2] to-[#084a8f]" : ""}`}
             >
                 Monthly
             </Button>
