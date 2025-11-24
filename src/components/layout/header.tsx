@@ -32,7 +32,7 @@ export function Header() {
                     <Link
                         href="https://github.com/houseoffoss/linkedin-insights"
                         target="_blank"
-                        className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md shadow-lg rounded-lg transition-all duration-300 border border-white/10 group"
+                        className="flex items-center gap-2 px-3 py-1.5 text-sm font-medium bg-white/10 hover:bg-white/20 backdrop-blur-md shadow-lg rounded-lg transition-all duration-300 border border-white/10 group animate-slide-down-fade animate-shimmer"
                     >
                         <svg
                             className="w-4 h-4 text-white/90 group-hover:text-white transition-colors"
@@ -48,7 +48,7 @@ export function Header() {
                         </svg>
                         <span className="text-white/90 group-hover:text-white transition-colors">Star on GitHub</span>
                         {stars !== null && (
-                            <span className="flex items-center gap-1 ml-1 px-2 py-0.5 rounded-full bg-white/10 text-xs font-semibold text-white/90 group-hover:text-white transition-colors border border-white/5">
+                            <span className="flex items-center gap-1 ml-1 px-2 py-0.5 rounded-full bg-white/10 text-xs font-semibold text-white/90 group-hover:text-white transition-colors border border-white/5 animate-scale-in">
                                 <Star className="w-3 h-3" />
                                 {stars}
                             </span>

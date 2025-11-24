@@ -4,6 +4,7 @@ import { Charts } from "@/components/dashboard/charts"
 import { KPICards } from "@/components/dashboard/kpi-cards"
 import { TopPostsCharts } from "@/components/dashboard/top-posts-charts"
 import { TopPostsAnalysis } from "@/components/dashboard/top-posts-analysis"
+import { StarNudge } from "@/components/star-nudge"
 import { Button } from "@/components/ui/button"
 import { useData } from "@/context/data-context"
 import { ArrowLeft, Download } from "lucide-react"
@@ -57,6 +58,7 @@ export default function DashboardPage() {
                     timePeriod={timePeriod}
                 />
             </div>
+            <StarNudge />
         </div>
     )
 }

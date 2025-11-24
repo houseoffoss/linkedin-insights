@@ -12,12 +12,16 @@ const firebaseConfig = {
 }
 
 // Initialize Firebase
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
-
-// Initialize Analytics (only in browser)
+let app = null
 let analytics: Analytics | null = null
-if (typeof window !== "undefined") {
-    analytics = getAnalytics(app)
+
+if (process.env.NODE_ENV === "production") {
+    app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0]
+
+    // Initialize Analytics (only in browser)
+    if (typeof window !== "undefined") {
+        analytics = getAnalytics(app)
+    }
 }
 
 export { app, analytics }
